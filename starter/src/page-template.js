@@ -116,3 +116,5 @@ module.exports = team => {
 </html>
     `;
 };
+console.log("Hello from page-template.js");
+// ... rest of your code

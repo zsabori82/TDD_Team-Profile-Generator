@@ -1,7 +1,7 @@
 {
   "name": "starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Your Task",
   "main": "index.js",
   "directories": {
     "lib": "lib"

@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "starter",
   "version": "1.0.0",
   "description": "## Your Task",
@@ -7,16 +6,15 @@
   "directories": {
     "lib": "lib"
   },
-  "scripts": {
-    "test": "jest"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^29.7.0"
-  },
   "dependencies": {
-    "inquirer": "^8.2.6"
-  }
+    "inquirer": "^8.2.2",
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
-

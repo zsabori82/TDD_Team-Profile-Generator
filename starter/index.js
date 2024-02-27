@@ -1,16 +1,18 @@
+// Import necessary modules
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const inquirer = require("inquirer");
+import inquirer from 'inquirer';
+
 const path = require("path");
 const fs = require("fs");
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
 const teamMembers = [];
+
 
 // Function to prompt user for Manager details
 const promptManager = () => {
@@ -46,12 +48,66 @@ const promptManager = () => {
 
 // Function to prompt user for Engineer details
 const promptEngineer = () => {
-  // Similar to promptManager, collect engineer details and create an Engineer instance
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "Enter engineer's name:",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "Enter engineer's employee ID:",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Enter engineer's email:",
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "Enter engineer's GitHub username:",
+      },
+    ])
+    .then((answers) => {
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+      teamMembers.push(engineer);
+      promptMenu();
+    });
 };
 
 // Function to prompt user for Intern details
 const promptIntern = () => {
-  // Similar to promptManager, collect intern details and create an Intern instance
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "Enter intern's name:",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "Enter intern's employee ID:",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Enter intern's email:",
+      },
+      {
+        type: "input",
+        name: "school",
+        message: "Enter intern's school name:",
+      },
+    ])
+    .then((answers) => {
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+      teamMembers.push(intern);
+      promptMenu();
+    });
 };
 
 // Function to prompt user with a menu
@@ -71,9 +127,7 @@ const promptMenu = () => {
       } else if (answers.choice === "Intern") {
         promptIntern();
       } else {
-        // User selected to finish building the team, call render function
         const renderedHtml = render(teamMembers);
-        // Write the HTML to the output file
         fs.writeFileSync(outputPath, renderedHtml);
         console.log("Team HTML generated successfully!");
       }

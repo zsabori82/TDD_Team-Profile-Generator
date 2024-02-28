@@ -1,4 +1,4 @@
-// Import necessary modules
+// TODO: Import necessary modules
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -8,10 +8,13 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./src/page-template.js");
+
+// Import the 'render' function directly from the template file
+
+const generateHtml = require("./src/page-template.js");
+
 
 const teamMembers = [];
-
 
 // Function to prompt user for Manager details
 const promptManager = () => {
@@ -109,8 +112,13 @@ const promptIntern = () => {
     });
 };
 
+// ...
+
 // Function to prompt user with a menu
 const promptMenu = () => {
+  // Use a relative path to the CSS file
+  const cssPath = path.resolve(__dirname, 'assets/style.css');
+
   inquirer
     .prompt([
       {
@@ -126,12 +134,17 @@ const promptMenu = () => {
       } else if (answers.choice === "Intern") {
         promptIntern();
       } else {
-        const renderedHtml = render(teamMembers);
-        fs.writeFileSync(outputPath, renderedHtml);
+        const cssContent = fs.readFileSync(cssPath, 'utf-8');
+        //const renderedHtml = render(teamMembers, cssContent); // Pass cssContent as an argument
+        //fs.writeFileSync(outputPath, renderedHtml);
         console.log("Team HTML generated successfully!");
       }
     });
 };
+
+// ...
+
+
 
 // Start by prompting the user for Manager details
 promptManager();

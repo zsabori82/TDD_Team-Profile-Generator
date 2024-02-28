@@ -82,6 +82,9 @@ const generateTeam = team => {
 // exports function to generate entire page
 module.exports = team => {
 
+   // exports function to generate entire page
+module.exports = (team, cssContent) => {
+}
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -93,10 +96,11 @@ module.exports = team => {
     <title>My Team</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+        <style>
+            ${cssContent}
+        </style>
+        <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -117,4 +121,4 @@ module.exports = team => {
     `;
 };
 console.log("Hello from page-template.js");
-// ... rest of your code
+

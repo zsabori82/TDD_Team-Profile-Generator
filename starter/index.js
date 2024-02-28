@@ -138,6 +138,8 @@ const promptMenu = () => {
         //const renderedHtml = render(teamMembers, cssContent); // Pass cssContent as an argument
         //fs.writeFileSync(outputPath, renderedHtml);
         console.log("Team HTML generated successfully!");
+        // Clear the teamMembers array
+        teamMembers.length = 0;
       }
     });
 };
